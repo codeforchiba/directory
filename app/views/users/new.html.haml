@@ -1,0 +1,38 @@
+%section#login-panel
+  %h1 ユーザー登録
+  - if flash[:alert].present?
+    .alert.alert-danger{role: "alert"}
+      = flash[:alert]
+
+  - if @user.errors.size > 0
+    .alert.alert-danger{role: "alert"}
+      エラーがあります。
+
+  = form_for @user, class: "form-horizontal" do |f|
+    .form-group{class: @user.errors[:email].size > 0 && "has-error"}
+      = f.email_field :email, class: "form-control", placeholder: "メールアドレス"
+
+    .form-group{class: @user.errors[:password].size > 0 && "has-error"}
+      = f.password_field :password, class: "form-control", placeholder: "パスワード"
+
+    .form-group{class: @user.errors[:password].size > 0 && "has-error"}
+      = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認入力)"
+
+    .form-group
+      = f.submit "登録する", class: "btn btn-block btn-lg btn-primary"
+
+  %hr
+
+  %ul
+    %li
+      = link_to auth_at_provider_path(provider: :facebook), class: "btn btn-block btn-lg btn-facebook" do
+        %span.fui-facebook
+        Facebook アカウントで登録する
+    -#%li
+      = link_to auth_at_provider_path(provider: :twitter), class: "btn btn-block btn-lg btn-twitter" do
+        %span.fui-twitter
+        Twitter でログインする
+    -#%li
+      = link_to auth_at_provider_path(provider: :github), class: "btn btn-block btn-lg btn-github" do
+        %span.fui-github
+        GitHub でログインする

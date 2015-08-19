@@ -1,0 +1,21 @@
+{
+  "name": "directory",
+  "version": "0.0.0",
+  "authors": [
+    "URAMOTO Kazunori <uramoto@wasoo.net>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flat-ui": "2.2.2",
+    "bootstrap": "~3.3.5"
+  }
+}

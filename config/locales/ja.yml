@@ -1,0 +1,5 @@
+ja:
+  errors:
+    messages:
+      facebook_not_authorized: Facebook との連携に失敗しました。
+      login_failed: ログインに失敗しました。
