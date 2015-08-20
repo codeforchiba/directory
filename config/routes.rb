@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [ :new, :create ]
   get  'signup' => 'users#new', as: :sign_up
 
+  resource :profile, only: [ :show, :edit, :update ], controller: :users
+
   resources :sessions, only: [ :new, :create, :destroy ]
   get    'login'  => 'sessions#new', as: :log_in
   delete 'logout' => 'sessions#destroy', as: :log_out

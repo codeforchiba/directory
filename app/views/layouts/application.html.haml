@@ -9,4 +9,5 @@
 
     %body
       .container
+        = render "shared/header" if logged_in?
         = yield

@@ -2,7 +2,7 @@ body {
   background-image: asset-url("background.jpg");
   background-size: cover;
 
-  .container {
+  > .container {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,6 +25,10 @@ body {
 
       filter: blur(4px);
       -webkit-filter: blur(4px);
+    }
+
+    .navbar {
+      margin-top: 20px;
     }
   }
 }

@@ -1,0 +1,11 @@
+%li
+  .circle{background_image_url(profile_image_url(user))}
+  .data
+    %h3= user.name
+    - if user.has_external?
+      %ul
+        - if user.with_facebook?
+          %li
+            = link_to facebook_url(user.facebook.uid), target: "_blank" do
+              %span.fui-facebook
+    %p= user.about
