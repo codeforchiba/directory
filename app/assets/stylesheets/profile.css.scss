@@ -1,0 +1,51 @@
+#profile {
+  @extend %main-section;
+
+  padding-right: 60px;
+  padding-left: 60px;
+
+  h1 {
+    font-size: 30px;
+
+    span.label {
+      font-size: 16px;
+    }
+  }
+
+  .form-horizontal {
+    list-style-type: none;
+
+    .form-group {
+      .control-label {
+        float: left;
+        width: 200px;
+
+        font-size: 18px;
+
+        span.label {
+          font-size: 12px;
+        }
+      }
+
+      .control-column {
+        margin-left: 226px;
+        padding: 3px 0;
+
+        font-size: 18px;
+        line-height: 2.3;
+
+        span {
+          font-size: 22px;
+        }
+
+        .btn + .btn {
+          margin-left: 12px;
+        }
+
+        p {
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+#user {
+  @extend %main-section;
+
+  padding-right: 60px;
+  padding-left: 60px;
+
+  #user-header {
+    position: relative;
+    height: 150px;
+
+    margin-bottom: 32px;
+
+    background-repeat: no-repeat;
+    background-position: center right;
+
+    h1 {
+      position: absolute;
+      bottom: 0;
+      right: 168px;
+
+      margin: 0;
+
+      font-size: 30px;
+    }
+
+    ul {
+      position: absolute;
+      bottom: 32px;
+      right: 168px;
+
+      margin: 0;
+
+      @extend %clearfix;
+      list-style-type: none;
+
+      li {
+        float: right;
+
+        span {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  p {
+    margin: 12px 80px;
+
+    &.buttons {
+      margin-top: 60px;
+      text-align: center;
+    }
+  }
+}

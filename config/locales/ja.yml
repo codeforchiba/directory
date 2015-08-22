@@ -1,5 +1,27 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        about: 自己紹介
+
+  helpers:
+    label:
+      user:
+        name: 名前(ニックネーム可)
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: パスワード(再入力)
+
   errors:
     messages:
       facebook_not_authorized: Facebook との連携に失敗しました。
       login_failed: ログインに失敗しました。
+      facebook_already_connected: 既に連携済みの Facebook アカウントです。
+
+  messages:
+    common:
+      updated: 更新しました。
+      password_changed: パスワードを変更しました。
+      facebook_connected: Facebook と連携しました。

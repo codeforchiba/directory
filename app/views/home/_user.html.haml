@@ -1,11 +1,15 @@
 %li
   .circle{background_image_url(profile_image_url(user))}
   .data
-    %h3= user.name
+    %h3
+      - if user == current_user
+        あなた！
+      - else
+        = link_to user.name, user_path(user)
     - if user.has_external?
       %ul
         - if user.with_facebook?
           %li
             = link_to facebook_url(user.facebook.uid), target: "_blank" do
               %span.fui-facebook
-    %p= user.about
+    %p= three_dots user.about, 50

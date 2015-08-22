@@ -1,0 +1,16 @@
+%section#user
+  #user-header{background_image_url(profile_image_url(@user))}
+    - if @user.has_external?
+      %ul
+        - if @user.with_facebook?
+          %li
+            = link_to facebook_url(@user.facebook.uid), target: "_blank" do
+              %span.fui-facebook
+
+    %h1= @user.name
+
+  = nl2p @user.about
+
+  %p.buttons
+    = link_to root_path, class: "btn btn-lg btn-primary" do
+      戻る

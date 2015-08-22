@@ -1,0 +1,43 @@
+%section#profile
+  - if flash[:notice].present?
+    .alert.alert-success{role: "alert"}
+      = flash[:notice]
+
+  - if flash[:alert].present?
+    .alert.alert-danger{role: "alert"}
+      = flash[:alert]
+
+  %h1
+    = @user.name
+    %span.label.label-primary 公開
+
+  %ul.form-horizontal
+    %li.form-group
+      %label.control-label
+        = t("activerecord.attributes.user.email")
+        %span.label.label-default 非公開
+      %p.control-column
+        = @user.email
+
+    %li.form-group
+      %label.control-label
+        Facebook
+        %span.label.label-primary 公開
+      %p.control-column
+        - if @user.has_external? && @user.with_facebook?
+          連携済み
+        - else
+          = link_to auth_at_provider_path(provider: :facebook) do
+            連携する
+
+    %li.form-group
+      %label.control-label
+        = t("activerecord.attributes.user.about")
+        %span.label.label-primary 公開
+      .control-column
+        = nl2p @user.about
+
+    %li.form-group
+      .control-column
+        = link_to edit_profile_path, class: "btn btn-lg btn-primary" do
+          プロフィールを編集する

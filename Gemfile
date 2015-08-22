@@ -4,6 +4,7 @@ gem 'rails', '4.2.3'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
 gem 'sorcery'
+gem 'email_validator'
 
 gem 'hamlit'
 gem 'sass-rails', '~> 5.0'

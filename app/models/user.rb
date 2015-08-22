@@ -3,9 +3,17 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy, autosave: true
 
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, length: { minimum: 8 }
-  validates :password_confirmation, presence: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true, email: true
+
+  attr_accessor :current_password
+
+  before_create :initialize_uuid
+
+  with_options on: :with_password do |v|
+    v.validates :password, presence: true, confirmation: true, length: { minimum: 8 }
+    v.validates :password_confirmation, presence: true
+  end
 
   def has_external?
     self.authentications.exists?
@@ -21,5 +29,11 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  private
+
+  def initialize_uuid
+    self.uuid = SecureRandom.uuid
   end
 end

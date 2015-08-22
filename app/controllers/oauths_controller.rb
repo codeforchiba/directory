@@ -6,6 +6,14 @@ class OauthsController < ApplicationController
   end
 
   def callback
+    if logged_in?
+      add_credential
+    else
+      register_user
+    end
+  end
+
+  def register_user
     unless auth_params.has_key? :error
       provider = auth_params[:provider]
 
@@ -27,7 +35,32 @@ class OauthsController < ApplicationController
       message = auth_params[:error_description] || auth_params[:error_message]
       logger.error "[#{auth_params[:error_code]}] #{auth_params[:error]} #{message}"
 
-      redirect_to return_path, alert:  I18n.t("errors.messages.facebook_not_authorized")
+      redirect_to return_path, alert: I18n.t("errors.messages.facebook_not_authorized")
+    end
+  end
+
+  def add_credential
+    unless auth_params.has_key? :error
+      provider = auth_params[:provider]
+
+      begin
+        sorcery_fetch_user_hash(provider)
+
+        unless user = User.load_from_provider(provider, @user_hash[:uid].to_s)
+          add_provider_to_user(provider)
+          redirect_to profile_path, notice: I18n.t("messages.common.facebook_connected")
+        else
+          redirect_to profile_path, alert: I18n.t("errors.messages.facebook_already_connected")
+        end
+      rescue => e
+        logger.error e
+        redirect_to profile_path, alert: I18n.t("errors.messages.facebook_not_authorized")
+      end
+    else
+      message = auth_params[:error_description] || auth_params[:error_message]
+      logger.error "[#{auth_params[:error_code]}] #{auth_params[:error]} #{message}"
+
+      redirect_to profile_path, alert: I18n.t("errors.messages.facebook_not_authorized")
     end
   end
 

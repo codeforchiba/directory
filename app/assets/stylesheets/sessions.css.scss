@@ -2,7 +2,7 @@
   background-color: rgb(255, 255, 255);
 
   width: 500px;
-  height: 600px;
+  min-height: 500px;
 
   margin: 0 auto;
 
@@ -41,7 +41,7 @@
 
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0 0 38px;
 
     li {
       width: 80%;
