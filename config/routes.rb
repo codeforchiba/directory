@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'oauths/callback' => 'oauths#callback'
   get  'oauths/:provider' => 'oauths#oauth', as: :auth_at_provider
 
+  get  'embed/:id' => 'users#embedded'
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

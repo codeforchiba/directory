@@ -24,6 +24,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def embedded
+    @user = User.find_by(uuid: params[:id])
+
+    if @user.present?
+      render layout: "embed"
+    else
+      render nothing: true, status: 404
+    end
+  end
+
   private
 
   def user_params

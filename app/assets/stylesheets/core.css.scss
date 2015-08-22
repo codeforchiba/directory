@@ -31,4 +31,9 @@ body {
       margin-top: 20px;
     }
   }
+
+  &.embed {
+    background-image: none;
+    background-color: rgb(250, 250, 250);
+  }
 }
